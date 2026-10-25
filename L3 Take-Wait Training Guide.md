@@ -1,6 +1,6 @@
 # L3 Take–Wait Model — Training Guide (sourced)
 
-Companion to [[Market Impact - Three Layers]] · data prep [[Data Preparation]].  
+Companion to [[Market Impact - Three Layers]] · data prep [[Data Preparation]] · sim [[L3 Take-Wait Simulator Guide]].  
 ## 0. Model you are training
 
 $$
@@ -106,6 +106,7 @@ Optional $\beta\sigma\sqrt{\tau}$: light ratio of adverse mid move over wait gap
 9. Score **parent** IS, leftover, participation.  
 10. Paper trade → A/B.  
 11. Later upgrade: OW target $D^\star$ / take-the-refill ([[papers/obizhaeva-wang-2013.pdf]]).
+12. Compose decision + simulator hooks: [[L3 Take-Wait Simulator Guide]].
 
 ---
 

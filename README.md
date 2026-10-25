@@ -1,11 +1,13 @@
 # Impact Model References
 
-Reference PDFs and the L3 take–wait training guide.
+Reference PDFs and L3 take–wait guides.
 
 | Path | Contents |
 |------|----------|
 | `papers/` | Academic PDFs (OW, Cont–Kukanov, Bouchaud, AC WP, …) |
-| `desktop-copies/` | Copies from Desktop/Market Impact |
-| [[L3 Take-Wait Training Guide]] | Sourced training runbook |
+| `Data Preparation.md` | Tape → events → $I_0$, $R$, $\hat G$ |
+| `L3 Take-Wait Training Guide.md` | Sourced training runbook |
+| `L3 Take-Wait Simulator Guide.md` | Compose $C_{\mathrm{take}}$ / $C_{\mathrm{wait}}$ and wire into a simulator |
+| `Market Impact - Three Layers.md` | Layer map |
 
-Working notes stay in `Algo/`: [[Market Impact - Three Layers]], [[Market Impact model]], [[Almgren Chriss]].
+Working notes stay in `Algo/` (local vault): Market Impact - Three Layers, Market Impact model, Almgren Chriss.
