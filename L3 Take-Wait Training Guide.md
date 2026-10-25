@@ -36,6 +36,19 @@ $$
 Parent side (for $q'$, wait-risk): remaining $Q$, time left, target curve $X^\star(t)$ so you can compute $v^\star$ and lag $L_t$.
 LOB snapshots (or reconstructable book) at decision time for $W(q)$.
 
+### 2.15 Data preparation (tape → take events)
+
+Each print is an aggressive take hitting a resting quote. Build the $I_0$ / $G$ sample from market trades + quotes (own fills optional for venue/routing).
+
+- **Side:** tag buy/sell vs bid/ask (quote rule / Lee–Ready): trade at or above ask → buy take; at or below bid → sell take.
+- **Sweep grouping:** a multi-level walk prints as several same-side trades in one burst (same ms / same aggressor). Merge into one event; $q$ = sum of sizes. One markout from the start of the burst.
+- **Arrival mid:** mid just before the event ($\text{mid}_{t-}$).
+- **Markout path:** keep mid at fixed lags $h$ (same set always; see §2.1). $y$ uses short $h$ for $I_0$; longer lags for $G$.
+- **Filters:** drop crossed/locked books and bad clocks.
+- **Optional residual:** subtract market return over $[t,t+h]$ so $y$ is closer to pure impact.
+- **Output rows:** $(q,\,\text{side},\,\text{mid}_{t-},\,\text{mid}_{t+h},\,y)$ — this is the §2.1 take-markout dataset.
+- **Waits:** queue / limit fills are a separate slice for $q'$ and live $W$; do not mix into the $I_0$ fit.
+
 ### 2.2 Train $I_0(q)$
 
 $I_0(q)$ is **immediate impact of taking size $q$** — how much mid is expected to move right after that take, in bps. Fit as $a q^b$ from short-horizon markouts.
@@ -90,7 +103,7 @@ Optional $\beta\sigma\sqrt{\tau}$: light ratio of adverse mid move over wait gap
 
 ## 3. Step-by-step training runbook
 
-1. Export take-markout dataset (fields in §2.1).  
+1. Prep tape → take events (§2.15); export take-markout dataset (fields in §2.1).  
 2. Fit $I_0(q)$ (§2.2); save artifact + plots (bps vs size).  
 3. Fit $G(\tau)$ (§2.3); save $\rho$ or table; run Gatheral sanity check.  
 4. Unit-test $W(q)$ on recorded books.  
