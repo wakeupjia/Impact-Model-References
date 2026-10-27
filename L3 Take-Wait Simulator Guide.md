@@ -1,6 +1,6 @@
 # L3 Take–Wait — Compose & Simulator Guide (for AI)
 
-Companion to [[L3 Take-Wait Training Guide]] · [[Data Preparation]] · [[Market Impact - Three Layers]] · [[L3 Take-Wait Boss Catchup]].
+Companion to [[L3 Take-Wait Training Guide]] · [[Data Preparation]] · [[Market Impact - Three Layers]] · [[Discussion]].
 
 ## 1. Goal
 
