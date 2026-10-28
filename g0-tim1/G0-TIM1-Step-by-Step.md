@@ -274,6 +274,25 @@ No separate regression.
   S(\tau)=\sum_i I_0(q_i)\,\frac{G_0(\mathrm{age}_i+\hat\ell(\tau))}{G_0(1)}.
   \]
 
+
+### 7.1 Worked live \(S\) (same toy \(g\))
+
+Reuse \(g(1)=1\), \(g(2)=0.72\) from §6.5. \(L_{\mathrm{keep}}=2\). Suppose \(I_0(q)=0.10\) for every own child (toy constant). Buffer holds **own** takes only.
+
+| clock (public trade #) | event | buffer after event `(age, I0)` | \(S=\sum I_0\,g(\mathrm{age})\) |
+| --- | --- | --- | --- |
+| start | parent opens | empty | \(0\) |
+| — | **own** take A | `(1, 0.10)` | \(0.10\cdot 1=0.10\) |
+| +1 public | ages +=1 | `(2, 0.10)` | \(0.10\cdot 0.72=0.072\) |
+| — | **own** take B | `(2, 0.10), (1, 0.10)` | \(0.072+0.10=0.172\) |
+| +1 public | ages +=1; drop age>2 | `(2, 0.10)` ← B only; A dropped | \(0.10\cdot 0.72=0.072\) |
+| +1 public | ages +=1; drop | empty | \(0\) |
+
+At each public tick you only loop the current buffer (here at most 2 rows), multiply each by table \(g(\mathrm{age})\), and add. No \(N\times N\) matrix.
+
+Candidate wait of \(\hat\ell=1\) trade while buffer is `(2, 0.10), (1, 0.10)`: ages become 3 and 2 → entry at age 3 is past \(L\) so dropped → \(S(\tau)=0.10\cdot g(2)=0.072\).
+
+
 **OW exponential** \(e^{-\rho\tau}\) scalar multiply is **special case only** (age-independent). Do not scalar-multiply a power-law / table \(G_0\).
 
 ---
