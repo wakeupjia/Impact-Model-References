@@ -12,3 +12,5 @@ Reference PDFs and L3 take–wait guides.
 | `Market Impact - Three Layers.md` | Layer map |
 
 Working notes stay in `Algo/` (local vault): Market Impact - Three Layers, Market Impact model, Almgren Chriss.
+
+- [`g0-tim1/`](./g0-tim1/) — bare G₀ / TIM1 training + eval package (mock fixtures; not live published params)
